@@ -1,1 +1,47 @@
 /* Desenvolva sua estilização aqui...*/
+.div-left{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 40%;
+    justify-content: center;
+    height: 50%;
+}
+.recently{
+    margin-top: 1rem;
+    display: block;
+    height: 30px;
+}
+.div-rigth{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    height: 50%;
+    
+}
+.div-rigth h2{
+    margin-bottom: 1rem;
+}
+a{
+    width: 100%;
+    color: var(--color-brand-1);
+}
+.ul-recently {
+    display: flex;
+
+}
+.ul-recently img{
+    width: 30px;
+    border-radius: 50%;
+}
+.div-recently{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+#spanNotFound{
+    color: var(--color-brand-1);
+    position: absolute;
+    top: 35px;
+}

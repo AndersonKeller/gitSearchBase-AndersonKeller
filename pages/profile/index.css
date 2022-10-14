@@ -1,1 +1,71 @@
 /* Desenvolva sua estilização aqui...*/
+.main-profile{
+    height: 100vh;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2rem;
+   
+
+    
+}
+.div-user{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.div-user img{
+    width: 100px;
+    border-radius: 50%;
+    border: 2px solid var(--color-brand-1);
+}
+.div-user h2{
+    display: block;
+   
+}
+.div-infos{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.div-btns{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.ul-repos{
+    display: flex;
+    padding: 2rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+   
+}
+.li-repos{
+    display: flex;
+    flex-direction: column;
+    min-width: 48%;
+    max-width: 48%;
+    gap: 1.5rem;
+    border: 2px solid var(--color-grey-4);
+    border-radius: 8px;
+    background-color: var(--color-grey-1);
+    padding: 2rem 1.5rem;
+    overflow: hidden;
+}
+.li-repos:hover{
+    border: 2px solid var(--color-grey-6);
+}
+.btns-repos{
+    display: flex;
+    gap: 1rem;
+}
+.repo-content{
+    display: block;
+    
+    height: 80px;
+    text-size-adjust: auto;
+    color: var(--color-grey-6);
+}

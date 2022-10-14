@@ -1,0 +1,22 @@
+section{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    height: 100%;
+}
+.section-left{
+    background-color: var(--color-brand-1);
+}
+.section-rigth{
+    background-color: var(--color-grey-2);
+}
+.section-rigth a{
+    text-decoration: none;
+    color: var(--color-grey-7);
+}
+a:disabled{
+    color: rgba(255, 255, 255, 0.35);
+}
