@@ -29,7 +29,7 @@ a{
 }
 .ul-recently {
     display: flex;
-
+    gap: 0.5rem;
 }
 .ul-recently img{
     width: 30px;

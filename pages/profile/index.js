@@ -10,7 +10,7 @@ function getUser(){
 function getReposLink(){
     let reposJson = localStorage.getItem("repos");
     let repos = JSON.parse(reposJson);
-    console.log(repos)
+   
     return repos;
 }
 async function getReposList(){
@@ -69,6 +69,7 @@ function createUserHeader(){
 async function createLiUser(){
     const ulRepos = document.querySelector(".ul-repos");
     const repoList = await getReposList();
+   
     
    
       
@@ -84,9 +85,12 @@ async function createLiUser(){
         pContent.innerText = `${repo.description}`;
         const divBtns = document.createElement("div");
         divBtns.classList.add("btns-repos");
-        const btnRepo = document.createElement("button");
+        const btnRepo = document.createElement("a");
         btnRepo.classList.add("btn-repo");
-        btnRepo.innerText = "Repo"
+        btnRepo.classList.add("fake-button")
+        btnRepo.innerText = "Repo";
+        btnRepo.href = `${repo.html_url}`;
+        btnRepo.target = "_blank"
         const btnDemo = document.createElement("button");
         btnDemo.innerText = "Demo"
         btnDemo.classList.add("btn-demo");

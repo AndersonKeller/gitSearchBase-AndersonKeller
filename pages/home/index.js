@@ -17,28 +17,28 @@ async function mainFunction(){
      })
         btnSection.addEventListener("click",(e)=>{
             e.preventDefault();
-            
+            pushLocalUser();
           })
      }
     
      
     
-   //let listJson = [];
+   let listJson = [];
    renderRecently();
 function getRecentlyList(){
     
     const recentUser = localStorage.getItem("user");
-   console.log(recentUser)
+  
     const recentUserJson = JSON.parse(recentUser);
-    console.log(recentUserJson)
+    
     let listJson = [...recentUserJson];
-    //console.log(listJson)
+    
     return listJson;
 }
 
 async function renderRecently(){
-    let recentUserJson = await getRecentlyList();
-    console.log(recentUserJson)
+    let recentUserJson =  getRecentlyList();
+    
     const ulRecently = document.querySelector(".ul-recently");
     recentUserJson.forEach((user)=>{
     ulRecently.insertAdjacentHTML("afterbegin",`

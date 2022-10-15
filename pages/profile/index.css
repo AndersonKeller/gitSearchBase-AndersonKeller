@@ -62,9 +62,12 @@ header{
     display: flex;
     gap: 1rem;
 }
+.repo-title{
+    overflow: hidden;
+}
 .repo-content{
     display: block;
-    
+    overflow: hidden;
     height: 80px;
     text-size-adjust: auto;
     color: var(--color-grey-6);

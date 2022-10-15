@@ -1,6 +1,7 @@
 const input = document.querySelector(".input-section");
+
 async function getAPIdata(){
-   
+    
     const btnSection = document.querySelector(".btn-section");
     //btnSection.innerText = url
     const spanNot = document.querySelector("#spanNotFound")
@@ -28,23 +29,14 @@ async function getAPIdata(){
       return response.json()
      }).then(function(responseJson){
         console.log(responseJson);
-        
-           listUSer.push(responseJson);
-        
-        if(listUSer.length>3){
-            listUSer.shift()
-        }
-        localStorage.setItem("user",JSON.stringify(listUSer));
-        //listAvatar.push(responseJson.avatar_url);
-        localStorage.setItem("userAvatar",JSON.stringify(responseJson.avatar_url))
-        //listRepos.push(responseJson.repos_url)
-        localStorage.setItem("repos",JSON.stringify(responseJson.repos_url))
-        //userMain = responseJson;
-       // createUserHeader(responseJson)
-        //return data
+           localStorage.setItem("user",JSON.stringify(responseJson));
+           localStorage.setItem("repos",JSON.stringify(responseJson.repos_url))
+          
          return responseJson;
      })
-    // return data;
+
+     
+     return data;
     }catch(error){
          
          
@@ -54,6 +46,30 @@ async function getAPIdata(){
     }
    
  }
-let listUSer = [];
+
+ 
 let listAvatar = [];
 let listRepos = [];
+let listUSer = [];
+listUSer = [...JSON.parse(localStorage.getItem("user"))]
+
+async function pushLocalUser(){
+    const responseJson = await getAPIdata();
+    
+    
+    listUSer.push(responseJson);
+        
+        if(listUSer.length>3){
+            listUSer.shift()
+        }
+        localStorage.setItem("user",JSON.stringify(listUSer));
+        //listAvatar.push(responseJson.avatar_url);
+        
+        localStorage.setItem("userAvatar",JSON.stringify(responseJson.avatar_url))
+        //listRepos.push(responseJson.repos_url)
+        localStorage.setItem("repos",JSON.stringify(responseJson.repos_url))
+        //userMain = responseJson;
+       // createUserHeader(responseJson)
+        //return data
+        
+}
