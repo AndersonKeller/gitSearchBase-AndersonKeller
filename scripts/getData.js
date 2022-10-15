@@ -3,6 +3,7 @@ async function getAPIdata(){
    
     const btnSection = document.querySelector(".btn-section");
     //btnSection.innerText = url
+    const spanNot = document.querySelector("#spanNotFound")
     btnSection.classList.add("btn-section-load");
     try{
      const baseUrl = "https://api.github.com/users/"
@@ -15,7 +16,7 @@ async function getAPIdata(){
             btnSection.innerText ="Ver perfil no github"
             btnSection.setAttribute("onclick","window.location.href='../profile/index.html'");
             spanNot.innerText =""
-            
+            return response.json()
         }else{
             btnSection.innerText = "Usuário não encontrado"
             btnSection.setAttribute("disabled", true);
@@ -24,22 +25,26 @@ async function getAPIdata(){
             spanNot.innerText = "Usuário não encontrado"
         }
         btnSection.classList.remove("btn-section-load");
-         return response.json()
+      return response.json()
      }).then(function(responseJson){
         console.log(responseJson);
-        listUSer.push(responseJson);
+        
+           listUSer.push(responseJson);
+        
+        if(listUSer.length>3){
+            listUSer.shift()
+        }
         localStorage.setItem("user",JSON.stringify(listUSer));
-        listAvatar.push(responseJson.avatar_url);
-        localStorage.setItem("userAvatar",JSON.stringify(listAvatar))
-        listRepos.push(responseJson.repos_url)
-        localStorage.setItem("repos",JSON.stringify(listRepos))
+        //listAvatar.push(responseJson.avatar_url);
+        localStorage.setItem("userAvatar",JSON.stringify(responseJson.avatar_url))
+        //listRepos.push(responseJson.repos_url)
+        localStorage.setItem("repos",JSON.stringify(responseJson.repos_url))
         //userMain = responseJson;
        // createUserHeader(responseJson)
         //return data
          return responseJson;
      })
-     console.log(data)
-     return data;
+    // return data;
     }catch(error){
          
          
