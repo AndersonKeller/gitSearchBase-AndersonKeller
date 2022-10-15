@@ -24,18 +24,20 @@ button:disabled{
     color: var(--color-grey-7);
 }
 .btn-section-load{
-    animation: animationLoad 1s ease;
+    animation: animationLoad infinite linear;
     background-image: url("../assets/spinner.png");
     background-position: center;
     background-repeat: no-repeat;
     color: var(--color-brand-1);
+    
 }
 
 @keyframes animationLoad{
     0%{
-        transform: rotate(25%);
+        
+        transform: translate(0dg);
     }
     100%{
-        transform: rotate(75%);
+        transform: translate(365dg);
     }
 }

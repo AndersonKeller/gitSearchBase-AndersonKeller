@@ -69,10 +69,6 @@ function createUserHeader(){
 async function createLiUser(){
     const ulRepos = document.querySelector(".ul-repos");
     const repoList = await getReposList();
-   
-    
-   
-      
         repoList.forEach((repo)=>{
             const liRepos = document.createElement("li");
         liRepos.classList.add("li-repos");

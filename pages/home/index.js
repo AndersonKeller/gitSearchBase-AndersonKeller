@@ -25,7 +25,7 @@ async function mainFunction(){
     
    let listJson = [];
    renderRecently();
-function getRecentlyList(){
+ function getRecentlyList(){
     
     const recentUser = localStorage.getItem("user");
   
@@ -38,13 +38,22 @@ function getRecentlyList(){
 
 async function renderRecently(){
     let recentUserJson =  getRecentlyList();
-    
+    const input = document.querySelector(".input-section")
     const ulRecently = document.querySelector(".ul-recently");
     recentUserJson.forEach((user)=>{
+        setInputValue(user.login)
+        console.log(input.value)
     ulRecently.insertAdjacentHTML("afterbegin",`
     <li class="li-recently">
+    <a onclick="setInputValue()" href="../profile/index.html">
     <img src="${user.avatar_url}" alt="">
+    </a>
     </li>
     `)
    })
+}
+function setInputValue(value){
+    const input =document.querySelector(".input-section");
+    input.value = value;
+    getAPIdata()
 }

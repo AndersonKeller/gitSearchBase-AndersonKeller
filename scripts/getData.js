@@ -1,14 +1,14 @@
 const input = document.querySelector(".input-section");
 
 async function getAPIdata(){
-    
+    //console.log("Deu")
     const btnSection = document.querySelector(".btn-section");
     //btnSection.innerText = url
     const spanNot = document.querySelector("#spanNotFound")
-    btnSection.classList.add("btn-section-load");
+    spanNot.innerText = ""
     try{
      const baseUrl = "https://api.github.com/users/"
-     
+     btnSection.classList.add("btn-section-load")
      let user = input.value;
       const data = await fetch(`${baseUrl}${user}`)
      .then(function(response){
@@ -17,15 +17,15 @@ async function getAPIdata(){
             btnSection.innerText ="Ver perfil no github"
             btnSection.setAttribute("onclick","window.location.href='../profile/index.html'");
             spanNot.innerText =""
+            btnSection.classList.add("btn-section-load");
             return response.json()
         }else{
             btnSection.innerText = "Usuário não encontrado"
             btnSection.setAttribute("disabled", true);
-            btnSection.classList.remove("btn-section-load");
             const spanNot = document.querySelector("#spanNotFound");
             spanNot.innerText = "Usuário não encontrado"
         }
-        btnSection.classList.remove("btn-section-load");
+        
       return response.json()
      }).then(function(responseJson){
         console.log(responseJson);
@@ -35,16 +35,16 @@ async function getAPIdata(){
          return responseJson;
      })
 
-     
+     btnSection.classList.remove("btn-section-load");
      return data;
     }catch(error){
-         
          
          return error
 
     }finally{
+       
     }
-   
+    
  }
 
  
@@ -53,12 +53,24 @@ let listRepos = [];
 let listUSer = [];
 listUSer = [...JSON.parse(localStorage.getItem("user"))]
 
+
+
 async function pushLocalUser(){
+    let count =0
     const responseJson = await getAPIdata();
+    console.log(responseJson.id)
     
+    if(listUSer.length>0){
+        listUSer.forEach((user)=>{
+            if(user.id == responseJson.id){
+                count++
+            }
+        })
+    }
+        if(count==0){
+            listUSer.push(responseJson)
+        }
     
-    listUSer.push(responseJson);
-        
         if(listUSer.length>3){
             listUSer.shift()
         }
