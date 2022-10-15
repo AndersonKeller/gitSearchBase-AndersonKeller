@@ -41,11 +41,11 @@ async function renderRecently(){
     const input = document.querySelector(".input-section")
     const ulRecently = document.querySelector(".ul-recently");
     recentUserJson.forEach((user)=>{
-        setInputValue(user.login)
+        //setInputValue(user.login)
         console.log(input.value)
     ulRecently.insertAdjacentHTML("afterbegin",`
     <li class="li-recently">
-    <a onclick="setInputValue()" href="../profile/index.html">
+    <a href="../profile/index.html">
     <img src="${user.avatar_url}" alt="">
     </a>
     </li>
@@ -56,4 +56,5 @@ function setInputValue(value){
     const input =document.querySelector(".input-section");
     input.value = value;
     getAPIdata()
+    return input.value
 }

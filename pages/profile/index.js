@@ -22,8 +22,8 @@ async function getReposList(){
 
 }
 
-function createUserHeader(){
-    user = getUser();
+async function createUserHeader(){
+    user = await getUser();
     document.title.innerText = user.name;
 
     const main = document.querySelector(".main-profile");
