@@ -4,13 +4,13 @@ createUserHeader()
 function getUser(){
     let userJson = localStorage.getItem("user");
      let user = JSON.parse(userJson);
+     //const link = document.querySelectorAll(".a-link-rec");
      
      return user[user.length-1];
 }
 function getReposLink(){
     let reposJson = localStorage.getItem("repos");
     let repos = JSON.parse(reposJson);
-   console.log(repos)
     return repos;
 }
 async function getReposList(){
@@ -24,7 +24,7 @@ async function getReposList(){
 
 async function createUserHeader(){
     user = await getUser();
-    document.title.innerText = user.name;
+    document.title = `${user.name}`;
 
     const main = document.querySelector(".main-profile");
     const header = document.querySelector("#headerUser");

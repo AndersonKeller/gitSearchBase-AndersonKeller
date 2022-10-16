@@ -36,7 +36,7 @@ async function getAPIdata(user){
           
          return responseJson;
      })
-
+     
      btnSection.classList.remove("btn-section-load");
      return data;
     }catch(error){

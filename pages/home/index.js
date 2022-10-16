@@ -46,23 +46,24 @@ async function renderRecently(){
         //console.log(input.value)
     ulRecently.insertAdjacentHTML("afterbegin",`
     <li class="li-recently">
-    <a id="${user.login}" class="a-link-rec" href = "../profile/index.html" >
+    <a id="${user.login}"  class="a-link-rec" href ="../profile/index.html">
     <img src="${user.avatar_url}" alt="">
     </a>
     </li>
     `)
    });
-  // eventRecentlyList()
+   //eventRecentlyList()
 }
 
 function eventRecentlyList(){
     const link = document.querySelectorAll(".a-link-rec");
     link.forEach((user)=>{
         user.addEventListener("click",()=>{
-            console.log(user.id)
            getAPIdata(user.id);
+           
         })
-       // user.href ="../profile/index.html"
+        setTimeout(user.href ="../profile/index.html",3000)
+       // 
     })
 }
 function setInputValue(value){
