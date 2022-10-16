@@ -1,21 +1,23 @@
-const input = document.querySelector(".input-section");
+//const input = document.querySelector(".input-section");
 
-async function getAPIdata(){
+async function getAPIdata(user){
     //console.log("Deu")
     const btnSection = document.querySelector(".btn-section");
     //btnSection.innerText = url
+    //const link = document.querySelectorAll(".a-link-rec");
     const spanNot = document.querySelector("#spanNotFound")
     spanNot.innerText = ""
     try{
      const baseUrl = "https://api.github.com/users/"
      btnSection.classList.add("btn-section-load")
-     let user = input.value;
+     //let user = input.value;
       const data = await fetch(`${baseUrl}${user}`)
      .then(function(response){
         if(response.status == 200){
             btnSection.removeAttribute("disabled");
             btnSection.innerText ="Ver perfil no github"
             btnSection.setAttribute("onclick","window.location.href='../profile/index.html'");
+          
             spanNot.innerText =""
             btnSection.classList.add("btn-section-load");
             return response.json()
@@ -25,7 +27,7 @@ async function getAPIdata(){
             const spanNot = document.querySelector("#spanNotFound");
             spanNot.innerText = "Usuário não encontrado"
         }
-        
+        console.log(response)
       return response.json()
      }).then(function(responseJson){
         console.log(responseJson);
@@ -38,7 +40,7 @@ async function getAPIdata(){
      btnSection.classList.remove("btn-section-load");
      return data;
     }catch(error){
-         
+         console.log(error)
          return error
 
     }finally{
@@ -56,8 +58,10 @@ listUSer = [...JSON.parse(localStorage.getItem("user"))]
 
 
 async function pushLocalUser(){
+    const input = document.querySelector(".input-section");
+    let user = input.value
     let count =0
-    const responseJson = await getAPIdata();
+    const responseJson = await getAPIdata(user);
     console.log(responseJson.id)
     
     if(listUSer.length>0){

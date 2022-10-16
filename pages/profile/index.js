@@ -10,7 +10,7 @@ function getUser(){
 function getReposLink(){
     let reposJson = localStorage.getItem("repos");
     let repos = JSON.parse(reposJson);
-   
+   console.log(repos)
     return repos;
 }
 async function getReposList(){
