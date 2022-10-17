@@ -1,16 +1,15 @@
-//const input = document.querySelector(".input-section");
+
 
 async function getAPIdata(user){
-    //console.log("Deu")
+
     const btnSection = document.querySelector(".btn-section");
-    //btnSection.innerText = url
-    //const link = document.querySelectorAll(".a-link-rec");
+  
     const spanNot = document.querySelector("#spanNotFound")
     spanNot.innerText = ""
     try{
      const baseUrl = "https://api.github.com/users/"
      btnSection.classList.add("btn-section-load")
-     //let user = input.value;
+  
       const data = await fetch(`${baseUrl}${user}`)
      .then(function(response){
         if(response.status == 200){
@@ -79,13 +78,8 @@ async function pushLocalUser(){
             listUSer.shift()
         }
         localStorage.setItem("user",JSON.stringify(listUSer));
-        //listAvatar.push(responseJson.avatar_url);
-        
         localStorage.setItem("userAvatar",JSON.stringify(responseJson.avatar_url))
-        //listRepos.push(responseJson.repos_url)
         localStorage.setItem("repos",JSON.stringify(responseJson.repos_url))
-        //userMain = responseJson;
-       // createUserHeader(responseJson)
-        //return data
+        
         
 }

@@ -41,19 +41,23 @@ async function renderRecently(){
     const input = document.querySelector(".input-section")
     const ulRecently = document.querySelector(".ul-recently");
     recentUserJson.forEach((user)=>{
-        let login = user.login;
-        //setInputValue(user.login)
-        //console.log(input.value)
+        
     ulRecently.insertAdjacentHTML("afterbegin",`
     <li class="li-recently">
-    <a id="${user.login}"  class="a-link-rec" href ="../profile/index.html">
+    <a id="${user.login}" class="a-link-rec" href ="../profile/index.html">
+    <figure>
     <img src="${user.avatar_url}" alt="">
+    <legend hidden>Acessar esse perfil</legend>
+  </figure> 
+    
     </a>
     </li>
     `)
+ 
    });
-   //eventRecentlyList()
+  
 }
+
 
 function eventRecentlyList(){
     const link = document.querySelectorAll(".a-link-rec");
@@ -62,7 +66,7 @@ function eventRecentlyList(){
            getAPIdata(user.id);
            
         })
-        setTimeout(user.href ="../profile/index.html",3000)
+       // setTimeout(user.href ="../profile/index.html",3000)
        // 
     })
 }

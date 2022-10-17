@@ -1,11 +1,11 @@
 
 createUserHeader()
 
-function getUser(){
+ function getUser(){
     let userJson = localStorage.getItem("user");
      let user = JSON.parse(userJson);
-     //const link = document.querySelectorAll(".a-link-rec");
-     
+
+
      return user[user.length-1];
 }
 function getReposLink(){
@@ -17,7 +17,6 @@ async function getReposList(){
    
     const listRepos = await fetch(getReposLink());
     const resp = await listRepos.json();
-    //createLiUser()
     return resp
 
 }
@@ -50,7 +49,8 @@ async function createUserHeader(){
     const btnEmail = document.createElement("button");
     btnEmail.classList.add("btn-email");
     btnEmail.innerText = "Email";
-    btnEmail.setAttribute("onclick","window.location.href='mailto'")
+    btnEmail.setAttribute("onclick",`window.location.href=mailto:"${user.email}"`);
+    //btnEmail.setAttribute("onclick","window.location.href='mailto:'")
     const btnSwitch = document.createElement("button");
     btnSwitch.innerText = "Trocar de usuário"
     btnSwitch.classList.add("btn-switch");
@@ -58,9 +58,6 @@ async function createUserHeader(){
 
     divBtns.append(btnEmail,btnSwitch);
     header.append(divUser,divBtns);
-    //main.appendChild(header)
-   // return header;
-   //getReposList()
    createLiUser()
   
 }
@@ -87,9 +84,13 @@ async function createLiUser(){
         btnRepo.innerText = "Repo";
         btnRepo.href = `${repo.html_url}`;
         btnRepo.target = "_blank"
-        const btnDemo = document.createElement("button");
+        const btnDemo = document.createElement("a");
         btnDemo.innerText = "Demo"
-        btnDemo.classList.add("btn-demo");
+        btnDemo.classList.add("fake-button");
+        if(repo.has_pages == true){
+            btnDemo.href = `${repo.homepage}`;
+        btnDemo.target = "_blank"
+        }
 
         divBtns.append(btnRepo,btnDemo);
         liRepos.append(h2Name,pContent,divBtns);
